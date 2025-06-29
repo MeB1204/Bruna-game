@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo Mobile</title>
+    <style>
+        body, html { margin: 0; padding: 0; overflow: hidden; background: #000; }
+        #gameCanvas { display: block; width: 100vw; height: 100vh; }
+        #score { position: fixed; top: 10px; left: 10px; color: white; font-family: Arial; font-size: 18px; }
+        #leftBtn, #rightBtn { position: fixed; bottom: 20px; width: 80px; height: 80px; font-size: 24px; }
+        #leftBtn { left: 20px; }
+        #rightBtn { right: 20px; }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="360" height="640"></canvas>
+    <div id="score"></div>
+    <button id="leftBtn">◀️</button>
+    <button id="rightBtn">▶️</button>
+    <script src="script.js"></script>
+</body>
+</html>
