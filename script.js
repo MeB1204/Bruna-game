@@ -22,9 +22,9 @@ images.coca.src = "coca.png";
 images.milkshake.src = "milkshake.png";
 images.obstaculo.src = "obstaculo.png";
 
-const somEba = new Audio("eba.m4a");
-const somSalada = new Audio("salada.m4a");
-const somMilPontos = new Audio("mil_pontos.m4a");
+const somEba = new Audio("eba.mp3");
+const somSalada = new Audio("salada.mp3");
+const somMilPontos = new Audio("mil_pontos.mp3");
 
 let player = { x: 180, y: 520, width: 40, height: 60, speed: 7 };
 let items = [];
