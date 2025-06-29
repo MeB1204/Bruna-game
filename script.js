@@ -22,6 +22,10 @@ images.coca.src = "coca.png";
 images.milkshake.src = "milkshake.png";
 images.obstaculo.src = "obstaculo.png";
 
+const somEba = new Audio("eba.m4a");
+const somSalada = new Audio("salada.m4a");
+const somMilPontos = new Audio("mil_pontos.m4a");
+
 let player = { x: 180, y: 520, width: 40, height: 60, speed: 7 };
 let items = [];
 let obstacles = [];
@@ -94,6 +98,10 @@ function updateItems() {
             score += 10;
             isHappy = true;
             setTimeout(() => isHappy = false, 500);
+
+            somEba.play();
+
+            if (score % 1000 === 0) somMilPontos.play();
             if (score % 100 === 0) phase++;
             return false;
         }
@@ -106,6 +114,7 @@ function updateObstacles() {
         obs.y += obs.speed;
         if (collision(player, obs)) {
             lives--;
+            somSalada.play();
             if (lives <= 0) {
                 alert("Game Over! Você fez " + score + " pontos.");
                 document.location.reload();
@@ -142,7 +151,6 @@ document.addEventListener("keydown", function (e) {
     if (e.key === "ArrowRight" && player.x + player.width < canvas.width) player.x += player.speed;
 });
 
-// Movimento contínuo via Swipe
 let swipeActive = false;
 
 document.addEventListener("touchstart", function (e) {
