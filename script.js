@@ -142,10 +142,22 @@ document.addEventListener("keydown", function (e) {
     if (e.key === "ArrowRight" && player.x + player.width < canvas.width) player.x += player.speed;
 });
 
-document.getElementById("leftBtn")?.addEventListener("touchstart", () => {
-    if (player.x > 0) player.x -= player.speed;
-});
+// Movimento contínuo via Swipe
+let swipeActive = false;
 
-document.getElementById("rightBtn")?.addEventListener("touchstart", () => {
-    if (player.x + player.width < canvas.width) player.x += player.speed;
-});
+document.addEventListener("touchstart", function (e) {
+    swipeActive = true;
+}, false);
+
+document.addEventListener("touchmove", function (e) {
+    if (!swipeActive) return;
+    const touch = e.touches[0];
+    let newX = touch.clientX - player.width / 2;
+    if (newX < 0) newX = 0;
+    if (newX + player.width > canvas.width) newX = canvas.width - player.width;
+    player.x = newX;
+}, false);
+
+document.addEventListener("touchend", function () {
+    swipeActive = false;
+}, false);
